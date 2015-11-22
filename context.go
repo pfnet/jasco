@@ -108,17 +108,8 @@ func (c *Context) setUpContext(rw web.ResponseWriter, req *web.Request, next web
 
 // NotFoundHandler handles 404.
 func (c *Context) NotFoundHandler(rw web.ResponseWriter, req *web.Request) {
-	c.logger.WithFields(logrus.Fields{
-		"method": req.Method,
-		"uri":    req.URL.RequestURI(),
-		"status": http.StatusNotFound,
-	}).Error("The request URL not found")
-
-	rw.Header().Set("Content-Type", "application/json")
-	rw.WriteHeader(http.StatusNotFound)
-	if _, err := rw.Write([]byte(`{"error":{"code":"J0001","message":"The request URL was not found."}}`)); err != nil {
-		c.logger.WithField("err", err).Error("Cannot write a 404 response")
-	}
+	c.RenderError(NewError(requestURLNotFoundErrorCode, "The request URL was not found.",
+		http.StatusNotFound, nil))
 }
 
 // Log returns the logger having meta information.
