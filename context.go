@@ -140,14 +140,9 @@ func (c *Context) CLog(callerDepth int) *logrus.Entry {
 	}).WithFields(c.logFields)
 }
 
-func (c *Context) extractOptionStringFromPath(key string, target *string) error {
-	s, ok := c.request.PathParams[key]
-	if !ok {
-		return nil
-	}
-
-	*target = s
-	return nil
+// PathParams returns parameters embedded in the URL.
+func (c *Context) PathParams() *PathParams {
+	return &PathParams{c.request}
 }
 
 func (c *Context) render(status int, v interface{}) {
