@@ -58,6 +58,11 @@ func (c *Context) AddLogField(key string, value interface{}) {
 	c.logFields[key] = value
 }
 
+// RemoveLogField removes a field to be logged.
+func (c *Context) RemoveLogField(key string) {
+	delete(c.logFields, key)
+}
+
 // SetHTTPStatus sets HTTP status of the response. This method is used when an
 // action doesn't render JSON.
 func (c *Context) SetHTTPStatus(s int) {
