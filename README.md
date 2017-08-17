@@ -77,7 +77,7 @@ $ curl -XPOST -d'{"test":"data"}' http://localhost:10080/
 
 ## Logging
 
-jasco uses github.com/Sirupsen/logrus as a logger. Pass a logger that the
+jasco uses github.com/sirupsen/logrus as a logger. Pass a logger that the
 application uses to `jasco.New`. By default, the default logger of logrus will
 be used.
 

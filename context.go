@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/Sirupsen/logrus"
-	"github.com/gocraft/web"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -13,6 +11,9 @@ import (
 	"runtime"
 	"sync/atomic"
 	"time"
+
+	"github.com/gocraft/web"
+	"github.com/sirupsen/logrus"
 )
 
 // Context is a context object for gocraft/web.
